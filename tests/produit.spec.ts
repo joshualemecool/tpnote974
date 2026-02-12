@@ -15,7 +15,8 @@ test('Ajout de produits au panier (flemme de parler anglais)', async ({ loginPag
   // Ouvrir panier pour vérifier
   await cartPage.openCart();
 
-  // Assertion : vérifier que les produits sont bien dans le panier
+  
+  // vérifier que le produit 8 est dans le panier avec la quantité choisit
   await cartPage.expectQuantity(2, 1);
   await cartPage.expectQuantity(6, 1);
 });
@@ -44,6 +45,5 @@ test('login, ajout produits, panier, modifier quantité, supprimer', async ({ lo
   // Supprimer le produit 4
   await cartPage.removeItem(4);
 
-  // Assertion finale : vérifier que le produit 8 est dans le panier
   await cartPage.expectQuantity(8, 2);
 });

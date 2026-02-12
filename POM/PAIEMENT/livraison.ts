@@ -9,7 +9,7 @@ export class ShippingPage {
   }
 
   async fillShippingForm(shippingData: TestShipping) {
-    await this.page.getByTestId('shipping-firstname-input').fill(process.env.FIRSTNAME!);
+    await this.page.getByTestId('shipping-firstname-input').fill(process.env.FIRSTNAME!); //données dans le .env
     await this.page.getByTestId('shipping-lastname-input').fill(process.env.LASTNAME!);
     await this.page.getByTestId('shipping-email-input').fill(process.env.EMAIL!);
 
