@@ -1,16 +1,18 @@
 import { test as base, Page, expect } from '@playwright/test';
 import { RegisterPage } from '../POM/auth/register';
 import { LoginPage } from '../POM/auth/login';
-import { generateUser } from '../tests/outils/fakeuser';
+import { generateUser, generateProfileData } from '../tests/outils/fakeuser';
 import { ProductPage } from '../POM/produit/produit';
 import { CartPage } from '../POM/produit/cart';
 import { ShippingPage } from '../POM/PAIEMENT/livraison';
 import { PaymentPage } from '../POM/PAIEMENT/paiement';
 import { ConfirmationPage } from '../POM/PAIEMENT/confirmation';
 import { OptionsPage } from '../POM/option/option';
+import { LogoutPage } from '../POM/auth/logout';
 
 type Fixtures = {
     testUser?: { email: string; password: string; name: string };
+    changeCity?: {city: string};
     registerPage: RegisterPage;
     loginPage: LoginPage;
     productPage: ProductPage;
@@ -19,6 +21,7 @@ type Fixtures = {
     paymentPage: PaymentPage;
     confirmationPage: ConfirmationPage;
     optionsPage: OptionsPage;
+    logoutPage: LogoutPage;
     
 };
 
@@ -27,6 +30,13 @@ export const test = base.extend<Fixtures>({
         const user = generateUser();
         await use(user);
     },
+
+    changeCity: async ({ }, use) => {
+    const newCity = generateProfileData();
+    await use(newCity);
+},
+
+
     registerPage: async ({ page }, use) => {
         await use(new RegisterPage(page));
     },
@@ -56,6 +66,9 @@ export const test = base.extend<Fixtures>({
     },
      optionsPage: async ({ page }, use) => {
     await use(new OptionsPage(page));
+  },
+  logoutPage: async ({ page }, use) => {
+    await use(new LogoutPage(page));
   },
 });
 

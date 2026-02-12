@@ -12,7 +12,7 @@ export class CartPage {
   }
 
   async increaseQuantity(productId: number) {
-    await this.page.getByTestId(`increase-quantity-${productId}`).click();
+    await this.page.getByTestId(`increase-quantity-${productId}`).click(); //pareil que pour produit mais pour modifier les quantités
   }
 
   async decreaseQuantity(productId: number) {
@@ -23,7 +23,7 @@ export class CartPage {
     await this.page.getByTestId(`remove-item-${productId}`).click();
   }
 
-  // Optional: assert item quantity
+  // vérifier si la bonne quantité du produit choisit se trouve dans le panier
   async expectQuantity(productId: number, quantity: number) {
     const qtyLocator = this.page.getByTestId(`quantity-${productId}`);
     await expect(qtyLocator).toHaveText(String(quantity));

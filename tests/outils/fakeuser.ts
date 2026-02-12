@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+//faker global pour les POM
 
 //partie register
 export type TestUser = {
@@ -57,6 +58,14 @@ export function generatePayment(): TestPayment {
         cvv: faker.string.numeric(3),
     };
 }
+
+//partir options et profil 
+export function generateProfileData() {
+  return {
+    city: faker.location.city(),
+  };
+}
+
 
 
 

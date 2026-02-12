@@ -24,7 +24,7 @@ export class OptionsPage {
     await this.page.getByRole('button', { name: 'Plus de 200€' }).click();
   }
 
-  // Ajouter produit à wishlist et partager
+  // Ajouter produit à wishlist et partager, même si ça marche pas vraiment sur le site mais au moins ça clique dessus
   async wishlistAndShare(productTestId: number) {
     await this.page.getByTestId(`product-card-${productTestId}`).click();
     await this.page.getByTestId('product-detail-wishlist-button').click();

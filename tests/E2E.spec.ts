@@ -9,7 +9,8 @@ test('E2E complet : login → produits → panier → paiement → confirmation 
   shippingPage,
   paymentPage,
   confirmationPage,
-  optionsPage
+  optionsPage,
+  changeCity
 }) => {
   // 1️⃣ Login
   await page.goto('/');
@@ -44,7 +45,7 @@ test('E2E complet : login → produits → panier → paiement → confirmation 
   await confirmationPage.confirmAndTrack();
 
   // 8️⃣ Options / profil / wishlist / share
-  await optionsPage.updateCity('ville du loup très méchant graou');
+  await optionsPage.updateCity(changeCity!.city);
   await optionsPage.applyFilters();
   await optionsPage.wishlistAndShare(12); // id produit exemple
 });

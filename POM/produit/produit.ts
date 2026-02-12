@@ -14,7 +14,8 @@ export class ProductPage {
 
   // Select product by ID
   async selectProduct(productId: number) {
-    await this.page.getByTestId(`product-card-${productId}`).click();
+    await this.page.getByTestId(`product-card-${productId}`).click(); //à la place de choisir un produit directement dans le POM, ceci nous donne la possibilité de
+    //choisir quel produit ajouter dans le spec.ts
   }
 
   // Add currently viewed product to cart

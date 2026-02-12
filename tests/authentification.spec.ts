@@ -13,3 +13,10 @@ test('user can login with env credentials', async ({ loginPage, page }) => {
 
   await expect(page.getByTestId('login-button')).toBeHidden();
 });
+
+test('user can logout', async ({ loginPage, logoutPage, page }) => {
+await page.goto('/');
+await loginPage.login(process.env.EMAIL!, process.env.MOTDEPASSE!);
+await logoutPage.logout();
+await logoutPage.expectLogiMessage();
+});
